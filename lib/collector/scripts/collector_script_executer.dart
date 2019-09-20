@@ -19,7 +19,7 @@ class CollectorScriptExecuter {
 
     /// Запускает сценарий
   void start() {
-    for (final device in scriptInfo.devices) {
+    for (final _ in scriptInfo.devices) {
       // Группирует по прикладным драйверам
       // Строит задания
       // Вызывает каждый прикладной драйвер со списком заданий

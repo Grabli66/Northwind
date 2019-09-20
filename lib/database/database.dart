@@ -1,5 +1,6 @@
 import 'package:mongo_dart/mongo_dart.dart';
-import 'package:northwind/database/db_device.dart';
+import 'package:northwind/database/devices/db_device_collection.dart';
+import 'package:northwind/database/routes/db_route_collection.dart';
 
 /// Для доступа к базе данных
 class Database {
@@ -9,6 +10,12 @@ class Database {
   /// Подключение к базе
   Db _connection;
 
+  /// Коллекция с устройствами
+  DbDeviceCollection deviceCollection;
+
+  /// Коллекция с маршрутами
+  DbRouteCollection routeCollection;
+
   /// Приватный конструктор
   Database._();
 
@@ -17,18 +24,15 @@ class Database {
   }
 
   /// Открывает базу
-  void open() {
-      _connection = Db("mongodb://localhost:27017/northwind");
+  void open() async {
+    _connection = Db("mongodb://localhost:27017/northwind");
+    await _connection.open();
+    deviceCollection = DbDeviceCollection(_connection);
+    routeCollection = DbRouteCollection(_connection);
   }
 
-  /// Сохраняет устройство
-  void saveDevice(DbDevice device) {
-    final collection = _connection.collection("devices");
-    collection.save(device.toDocument());
-  }
-
-  /// Возвращает все устройства
-  List<DbDevice> getAllDevices() {
-    return null;
+  /// Закрывает соединение
+  void close() async {
+    await _connection.close();
   }
 }

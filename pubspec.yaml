@@ -12,6 +12,8 @@ dependencies:
   device_protocols:
     git: "https://github.com/Grabli66/DeviceProtocols"
   mongo_dart: ^0.3.6
+  uuid: ^2.0.2
+  meta: ^1.1.7
 
 dev_dependencies:
   pedantic: ^1.7.0
