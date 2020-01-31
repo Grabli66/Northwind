@@ -6,14 +6,14 @@ class ConsoleClient {
   static const ConsoleVersion = "1.0.1";
 
   /// Обрабатывает комманду
-  void _processCommand(String line) {
+  // void _processCommand(String line) {
 
-  }
+  // }
 
   /// Парсит комманду
-  void _parseCommand(String line) {
+  // void _parseCommand(String line) {
 
-  }
+  // }
 
   /// Запускает
   void start() {
